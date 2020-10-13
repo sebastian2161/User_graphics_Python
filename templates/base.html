@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../static/css/style.css">
+        <script src="../static/js/Chart.js"></script>
+        {% if title %}
+            <title>{{ title }} - User-Grafics</title>
+        {% else %}
+            <title>User-Grafics</title>
+        {% endif %}
+    </head>
+    <body>
+        </header>
+
+        <main class="container">
+            {% block content %}{% endblock content %}
+        </main>
+
+        <footer class="footer">
+        </footer>
+
+        <script src="../static/js/script.js"></script>
+    </body>
+</html>

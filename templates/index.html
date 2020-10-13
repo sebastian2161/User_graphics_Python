@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+    {% block content %}
+
+
+            <form method="GET" action="/filtro">
+                
+                <label>Seleccionar Usuario:</label>
+                <select name="user">
+                    <option value="1">Sebastian01</option> 
+                    <option value="2">Sebastian02</option>
+                    <option value="3">Sebastian03</option>
+                    <option value="4">Sebastian04</option>
+                    <option value="all" selected>All</option>
+                </select>
+
+                <input type="submit" value="Consultar">
+            </form>
+
+
+        <canvas id="myChart" width="400" height="200"></canvas>
+
+        <script>
+            
+            const ctx = document.getElementById('myChart').getContext('2d');
+            let colorHex = ['#FB3640', '#EFCA08', '#43AA8B', '#253D5B','#0000FF','#FF00FF','#800000'];
+            const myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: {{ dates | safe}},
+                    datasets: [{
+                        label: 'Modificaciones x Usuario (Mod x Us)',
+                        data: {{ prices }},
+                        backgroundColor: colorHex
+
+                    }]
+                },
+                options: {
+                    tooltips: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    hover: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+
+        </script>
+
+    {% endblock content %}
